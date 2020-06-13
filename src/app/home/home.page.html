@@ -1,0 +1,47 @@
+<ion-header [translucent]="true" style="background-color: darkgreen;">
+  <ion-toolbar style="--background: darkgreen;">
+    <ion-title>
+      Online Shop
+    </ion-title>
+  </ion-toolbar>
+  <ion-searchbar style="--background: white; --color: black;" [(ngModel)]="search"></ion-searchbar>
+</ion-header>
+
+<ion-content [fullscreen]="true" style="--background: white;">
+  <ion-grid>
+    <ion-row>
+      <ion-col size="6" *ngFor="let data of data |filter:search">
+        <ion-card style="--background: green;">
+          <img src="{{data.image}}" />
+          <ion-card-header>
+            <ion-row>
+              <ion-col size="8">
+                <ion-card-title>{{data.Name}}</ion-card-title>
+              </ion-col>
+              <ion-col size="4">
+                <ion-card-subtitle style="color: white;">₹ {{(data.Rate-((data.Rate*data.Discount)/100)).toFixed(1)}}</ion-card-subtitle>
+              </ion-col>
+              <ion-col size="6">
+                <ion-card-subtitle>{{data.MName}}</ion-card-subtitle>
+              </ion-col>
+              <ion-col size="6">
+                <ion-card-subtitle style="font-size: 10px;text-decoration: line-through;">₹ {{data.Rate}}  <span style="font-size: 15px; color: white;"> -{{data.Discount}}%</span></ion-card-subtitle>
+              </ion-col>
+            </ion-row>
+          </ion-card-header>
+        </ion-card>
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+ 
+  <!-- <ion-header collapse="condense">
+    <ion-toolbar>
+      <ion-title size="large">Blank</ion-title>
+    </ion-toolbar>
+  </ion-header>
+
+  <div id="container">
+    <strong>Ready to create an app?</strong>
+    <p>Start with Ionic <a target="_blank" rel="noopener noreferrer" href="https://ionicframework.com/docs/components">UI Components</a></p>
+  </div> -->
+</ion-content>
